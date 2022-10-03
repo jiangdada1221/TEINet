@@ -1,6 +1,6 @@
 *.txt
-*.csv
 *.tsv
+*.sh
 .ipynb_checkpoints
 __pycache__
 !embedding_32.txt
