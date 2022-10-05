@@ -3,11 +3,9 @@ TEINet is designed for the prediction of the specificity of TCR binding, using o
 
 <img src="https://github.com/jiangdada1221/tensorflow_in_practice/blob/master/TEINet.jpg" width="800"> <br />
 
-## Installation
-TCRpeg is a python software implemented based on the deeplearning library - Pytorch. It is available on PyPI and can be downloaded and installed via pip: <br />
- ```pip install tcrpeg``` <br />
-TCRpeg can be also installed by cloning the Github repository and using the pip: <br />
- ```pip install .``` <br />
+## Dependencies
+TEINet is writen in Python based on the deeplearning library - Pytorch. Compared to Tensorflow, Pytorch is more user friendly and you can control the details of the training process. I would strongly suggest using Pytorch as the deeplearning library so that followers can easily modify and retrain the model.  <br />
+
 The required software dependencies are listed below:
  ```
 Numpy
@@ -17,6 +15,7 @@ pandas
 scikit-learn
 scipy
 torch >= 1.1.0
+Levenshtein
  ```
 
 ## Data
