@@ -1,7 +1,7 @@
-# TCRpeg
+# TEINet
 TCRpeg is a deep probabilistic neural network framework used for inferring probability distribution for given CDR3 repertoires. Beyond that, TCRpeg can provide numerical embeddings for TCR sequences, generate new TCR sequences with highly similar statistical properties with the training repertoires. TCRpeg can be easily extended to act as a classifier for predictive purposes (TCRpeg-c). <br />
 
-<img src="https://github.com/jiangdada1221/tensorflow_in_practice/blob/master/workflow.png" width="800"> <br />
+<img src="https://github.com/jiangdada1221/tensorflow_in_practice/blob/master/TEINet.jpg" width="800"> <br />
 
 ## Installation
 TCRpeg is a python software implemented based on the deeplearning library - Pytorch. It is available on PyPI and can be downloaded and installed via pip: <br />
