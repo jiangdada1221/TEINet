@@ -29,7 +29,10 @@ Training script:
 python train.py --train_file data/train_pos.csv --test_file data/test.csv --epochs 1 --model_path results/model.pth
 ```
 Please check the train.py for details. (Or type python train.py --h) <br />
-
+Note that the default negative sampling strategy is Uniform Epiope, to choose other strategies, you need to specify: <br />
+```--fre 0 ``` for Random Epitope <br />
+```----sample_strategy sample_tcr --reference_tcr path_to_reference_tcr``` for Reference TCR <br />
+```--sample_strategy sample_tcr``` for Random TCR <br />
 Predict for TCR-epitope pairs [(t1,e1),(t2,e2),...]
 ```
 from predict import predict_only
