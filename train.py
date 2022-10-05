@@ -18,7 +18,7 @@ if __name__ == '__main__':
     parser.add_argument('--epochs',type=int,default=30)
     parser.add_argument('--cat_size',type=int,default=1536,help='the size of the concatenated embedding')
     parser.add_argument('--batch_size',type=int,default=48)
-    parser.add_argument('--sample_num',type=int,default=10)
+    parser.add_argument('--sample_num',type=int,default=10, help='The number of negative samples for a given positive pair')
     parser.add_argument('--fre',type=int,default=1,help='1: sample epitope based on frequency distribution; 0: randomly')
     parser.add_argument('--info',type=str,default='information',help='the information text in the output file')
     parser.add_argument('--reference_tcr',type=str,default='None',help='Path to reference TCR if using Reference TCR for negative sampling')
@@ -38,9 +38,9 @@ if __name__ == '__main__':
     parser.add_argument('--model_path',type=str,default='None',help='path to store the model')
     parser.add_argument('--train_file',type=str,default='data/train_pos.csv', help='Training set. Note that it should contain only the positive pairs') 
     parser.add_argument('--static',type=int,default=0,help='whether to use static dataset, i.e., sample negatives before the training process')   
-    parser.add_argument('--test_file',type=str,default='None')
+    parser.add_argument('--test_file',type=str,default='None',help='The path to the test file.')
     parser.add_argument('--pretrain',action='store_false',default=True,help='whether to use the pretrained encoder')    
-    parser.add_argument('--sample_strategy',type=str,default='sample_epi',help='The negative sampling strategy used; options=[sample_epi,sample_tcr]')    
+    parser.add_argument('--sample_strategy',type=str,default='sample_epi',help='The negative sampling strategy used; options=[\'sample_epi\',\'sample_tcr\']')    
     '''
     The four negative sampling strategies, you need to specify the following settings:
     @Random Epitope: --sample_strategy sample_epi --fre 0

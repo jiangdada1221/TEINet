@@ -158,3 +158,39 @@ def levenstein_filter(path_ref,path_to_filter, threshold,record_path=None):
     print('After filtering there are {} pairs'.format(len(data)))
     if record_path is not None:
         data.to_csv(record_path,index=False)
+        
+def aa_scan(seq,scan_aa='A',scan_aa_alternate='G',offset = 0):
+    seq = list(seq)
+    return_seq = []
+    for i in range(offset,len(seq)-offset):
+        s_ = copy.copy(seq)
+        s_[i] = scan_aa
+        if s_ != seq:
+            return_seq.append(''.join(s_))
+        else :
+            s_[i] = scan_aa_alternate
+            return_seq.append(''.join(s_))
+    return return_seq
+
+def contact_index(dis,axis = 0,threshold = 5,offset=1):
+    #original is 5 threshold
+    #start from 0
+    assert axis in [0,1]
+    c_index = []
+    for i in range(offset,dis.shape[axis]-offset):
+        compare = dis[i] if axis == 0 else dis[:,i]
+        if sum(compare <= threshold) > 0:
+            c_index.append(i)    
+    return c_index
+
+def mean_dis(dis,axis = 0,threshold = 5,offset=1):
+    #original is 5 threshold
+    #start from 0
+    assert axis in [0,1]
+    mean_distance = []
+    for i in range(offset,dis.shape[axis]-offset):
+        compare = dis[i] if axis == 0 else dis[:,i]
+        # if sum(compare <= threshold) > 0:
+        #     c_index.append(i)
+        mean_distance.append(np.mean(compare))    
+    return mean_distance

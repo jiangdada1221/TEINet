@@ -1,0 +1,1 @@
+The two files are just subset of the original data. For training a full version model, please download the DATA from the link provided in the homepage.

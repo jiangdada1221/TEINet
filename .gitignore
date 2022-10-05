@@ -20,3 +20,5 @@ setup.cfg
 tcrpeg.egg-info
 .ipynb
 test.py
+processed_data
+processed_daa/

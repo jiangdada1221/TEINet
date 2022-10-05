@@ -4,7 +4,7 @@ TEINet is designed for the prediction of the specificity of TCR binding, using o
 <img src="https://github.com/jiangdada1221/tensorflow_in_practice/blob/master/TEINet.jpg" width="800"> <br />
 
 ## Dependencies
-TEINet is writen in Python based on the deeplearning library - Pytorch. Compared to Tensorflow, Pytorch is more user friendly and you can control the details of the training process. I would strongly suggest using Pytorch as the deeplearning library so that followers can easily modify and retrain the model.  <br />
+TEINet is writen in Python based on the deeplearning library - Pytorch. Compared to Tensorflow, Pytorch is more user friendly and you can control the details of the training process. I would strongly suggest using Pytorch as the deeplearning library so that followers can easily modify and retrain the model. TEINet utilizes the TCRpeg as sequence encoders, thus we suggest users checking the [TCRpeg package](https://github.com/jiangdada1221/TCRpeg) first. <br />
 
 The required software dependencies are listed below:
  ```
@@ -20,37 +20,36 @@ Levenshtein
 
 ## Data
 
- All the data used in the paper is publicly available, so we suggest readers refer to the original papers for more details. We also upload the processed data which can be downloaded via [this link](https://drive.google.com/file/d/1rqgn6G2js85QS6K7mvMwOEepm4ARi54H/view?usp=sharing)
+ All the data used in the paper is publicly available, so we suggest readers refer to the original papers for more details. We also upload the processed data which can be downloaded via [this link](https://drive.google.com/file/d/1ioEkYeIdLMafYgoNER33QrThKHlgZCzZ/view?usp=sharing). Description.txt in the data zip file gives a brief descripion for each file.
 
-## Usage instructions
+## Train TEINet
 
-Define and train TCRpeg model:
+Training script:
 ```
-from tcrpeg.TCRpeg import TCRpeg
-model = TCRpeg(embedding_path='tcrpeg/data/embedding_32.txt',load_data=True, path_train=tcrs) 
-#'embedding_32.txt' records the numerical embeddings for each AA; We provide it under the 'tcrpeg/data/' folder.
-#'tcrs' is the TCR repertoire ([tcr1,tcr2,....])
-model.create_model() #initialize the TCRpeg model
-model.train_tcrpeg(epochs=20, batch_size= 32, lr=1e-3) 
+python train.py --train_file data/train_pos.csv --test_file data/test.csv --epochs 1 --model_path results/model.pth
 ```
-Use the pretrained TCRpeg model for downstream applications:
-```
-log_probs = model.sampling_tcrpeg_batch(tcrs)   #probability inference
-new_tcrs = model.generate_tcrpeg(num_to_gen=1000, batch_size= 100)    #generation
-embs = model.get_embedding(tcrs)    #embeddings for tcrs
-```
+Please check the train.py for details. (Or type python train.py --h) <br />
 
- We provide a tutorial jupyter notebook named [tutorial.ipynb](https://github.com/jiangdada1221/TCRpeg/blob/main/tutorial.ipynb). It contains most of the functional usages of TCRpeg which mainly consist of three parts: probability inference, numerical encodings & downstream classification, and generation. The python scripts and their usages are shown below: <br />
+Predict for TCR-epitope pairs [(t1,e1),(t2,e2),...]
+```
+from predict import predict_only
+predictions = predict_only(ts,es,model=results/model.pth)
+```
+Compute the score difference in different region of Complexes in PDB database
+```
+python pdb_distance.py --threshold 5.0 --model_path results/model.pth
+```
+<br />
 
 | Module name                                    | Usage                                              |    
 |------------------------------------------------|----------------------------------------------------|
-| TCRpeg.py                                      | Contain most functions of TCRpeg                   |
-| evaluate.py                                    | Evaluate the performance of probability inference  |
-| word2vec.py                                    | word2vec model for obtaining embeddings of AAs     |
-| model.py                                       | Deep learning models of TCRpeg,TCRpeg-c,TCRpeg_vj  |
-| classification.py                              | Apply TCRpeg-c for classification tasks            |
-| utils.py                                       | N/A (contains util functions)                      |
-| process_data.py                                | Construct the universal TCR pool                   |
+| model.py                                      | TEINet model                   |
+| sampler.py                                    | Sampling strategies  |
+| train.py                                    | Training the TEINet model     |
+| pdb_distance.py                                       | Compute the score difference in different regions  |
+| utils.py                              | Split and sampling functions as well as functions used in pdb_distance.py             |
+| predict.py                                       | Make predictions for user input                      |
+| tcrpeg                                | TCRpeg package; used for encoding sequences                   |
 
 ## Contact
 
@@ -58,5 +57,5 @@ We check email often, so for instant enquiries, please contact us via [email](ma
 
 ## License
 
-Free use of soNNia is granted under the terms of the GNU General Public License version 3 (GPLv3).
+Free use of TEINet is granted under the terms of the GNU General Public License version 3 (GPLv3).
 

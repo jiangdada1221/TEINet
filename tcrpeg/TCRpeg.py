@@ -48,7 +48,6 @@ class TCRpeg:
                            type(vs_list) should be a list
         '''
 
-        print('Here')
         self.max_length = max_length
         self.embedding_size = embedding_size
         self.device = device
