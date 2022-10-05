@@ -28,10 +28,10 @@ Levenshtein
 ```
 python train.py --train_file data/train_pos.csv --test_file data/test.csv --epochs 1 --model_path results/model.pth
 ```
-Please check the train.py for details (Or type python train.py --h). Note that the default negative sampling strategy is Uniform Epiope, in order to choose other strategies, you need to specify: <br />
+Please check the train.py for details (Or type python train.py --h). Note that the default negative sampling strategy is Uniform Epiope, in order to choose other strategies, you need to specify: <br /> <br />
 ```--fre 0 ``` for Random Epitope <br />
 ```----sample_strategy sample_tcr --reference_tcr path_to_reference_tcr``` for Reference TCR <br />
-```--sample_strategy sample_tcr``` for Random TCR <br /> <br />
+```--sample_strategy sample_tcr``` for Random TCR 
 #### Predict for TCR-epitope pairs [(t1,e1),(t2,e2),...]
 ```
 from predict import predict_only
