@@ -7,7 +7,6 @@ __pycache__
 !classification.csv
 !pdf_test.csv
 !TCRs_train.csv
-results/
 one2many.py
 Untitled.ipynb
 plot*
