@@ -8,7 +8,7 @@ class TEINet(nn.Module):
     '''
     The TEINet consists of two pretrained TCRpeg encoder each for TCRs and epitopes. 
     '''
-    def __init__(self, en_tcr, en_epi,cat_size,dropout=0,device='cuda:0',normalize=False,weight_decay=0.0):
+    def __init__(self, en_tcr, en_epi,cat_size,dropout=0,device='cuda:0',normalize=True,weight_decay=0.0):
         super().__init__()
         '''
         @en_tcr: pretrained TCRpeg for TCR
