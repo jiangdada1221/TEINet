@@ -14,7 +14,7 @@ tqdm
 pandas
 scikit-learn
 scipy
-torch >= 1.1.0
+torch >= 1.1.0 (Tested on 1.8.0)
 Levenshtein
  ```
 
