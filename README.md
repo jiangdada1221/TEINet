@@ -1,5 +1,6 @@
 # TEINet
-TEINet is designed for the prediction of the specificity of TCR binding, using only the CDR3β chain of TCR and the epitope sequence within the pMHC complex. Following the concept of transfer learning, TEINet employs two separate pretrained encoders to convert TCRs and epitopes into numerical vectors, utilizing the architecture of recurrent neural networks to handle a variety of sequence lengths. We summarize the four current negative sampling strategies applied in the previous work and contrast them. <br />
+TEINet is designed for the prediction of the specificity of TCR binding, using only the CDR3β chain of TCR and the epitope sequence within the pMHC complex. Following the concept of transfer learning, TEINet employs two separate pretrained encoders to convert TCRs and epitopes into numerical vectors, utilizing the architecture of recurrent neural networks to handle a variety of sequence lengths. We summarize the four current negative sampling strategies applied in the previous work and contrast them. <br /> 
+We will provide our pretrained model after the publication of our manuscript. <br />
 
 <img src="https://github.com/jiangdada1221/tensorflow_in_practice/blob/master/TEINet.jpg" width="800"> <br />
 
