@@ -56,7 +56,7 @@ python pdb_distance.py --threshold 5.0 --model_path results/model.pth
 
 ## Contact
 ```
-Yuepeng Jiang
+Name: Yuepeng Jiang
 Email: yuepjiang3-c@my.cityu.edu.hk/yuj009@eng.ucsd.edu/jiangdada12344321@gmail.com
 Note: For instant query, feel free to send me an email since I check email often. Otherwise, you may open an issue section in this repository.
 ```
