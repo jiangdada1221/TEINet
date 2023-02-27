@@ -1,6 +1,6 @@
 # TEINet
 TEINet is designed for the prediction of the specificity of TCR binding, using only the CDR3β chain of TCR and the epitope sequence within the pMHC complex. Following the concept of transfer learning, TEINet employs two separate pretrained encoders to convert TCRs and epitopes into numerical vectors, utilizing the architecture of recurrent neural networks to handle a variety of sequence lengths. We summarize the four current negative sampling strategies applied in the previous work and contrast them. <br /> 
-We will provide our pretrained model after the publication of our manuscript. <br />
+We will provide our pretrained model after the publication of our manuscript in Briefings in Bioinformatics 2023. <br />
 
 <img src="https://github.com/jiangdada1221/tensorflow_in_practice/blob/master/TEINet.jpg" width="800"> <br />
 
@@ -55,10 +55,24 @@ python pdb_distance.py --threshold 5.0 --model_path results/model.pth
 | tcrpeg                                | TCRpeg package; used for encoding sequences                   |
 
 ## Contact
-
-We check email often, so for instant enquiries, please contact us via [email](mailto:jiangdada12344321@gmail.com). Or you may open an issue section.
-
+```
+Yuepeng Jiang
+Email: yuepjiang3-c@my.cityu.edu.hk/yuj009@eng.ucsd.edu/jiangdada12344321@gmail.com
+Note: For instant query, feel free to send me an email since I check email often. Otherwise, you may open an issue section in this repository.
+```
 ## License
 
 Free use of TEINet is granted under the terms of the GNU General Public License version 3 (GPLv3).
+
+## Citation (will be published in Briefings in Bioinformatics)
+```
+@article{jiang2022teinet,
+  title={TEINet: a deep learning framework for prediction of TCR-epitope binding specificity},
+  author={Jiang, Yuepeng and Huo, Miaozhe and Li, Shuaicheng},
+  journal={bioRxiv},
+  pages={2022--10},
+  year={2022},
+  publisher={Cold Spring Harbor Laboratory}
+}
+```
 
