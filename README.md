@@ -1,6 +1,5 @@
-# TEINet
+# TEINet 
 TEINet is designed for the prediction of the specificity of TCR binding, using only the CDR3β chain of TCR and the epitope sequence within the pMHC complex. Following the concept of transfer learning, TEINet employs two separate pretrained encoders to convert TCRs and epitopes into numerical vectors, utilizing the architecture of recurrent neural networks to handle a variety of sequence lengths. We summarize the four current negative sampling strategies applied in the previous work and contrast them. <br /> 
-We will provide our pretrained model after the publication of our manuscript in Briefings in Bioinformatics 2023. <br />
 
 <img src="https://github.com/jiangdada1221/tensorflow_in_practice/blob/master/TEINet.jpg" width="800"> <br />
 
@@ -33,6 +32,7 @@ Please check the train.py for details (Or type python train.py --h). Note that t
 ```--fre 0 ``` for Random Epitope <br />
 ```----sample_strategy sample_tcr --reference_tcr path_to_reference_tcr``` for Reference TCR <br />
 ```--sample_strategy sample_tcr``` for Random TCR 
+Note that if you want to use a static training dataset, please refer to the __epitope_sample_1fold__ or __tcr_sample_1fold__ functions in utils.py for sampling negatives using different strategies.
 #### Predict for TCR-epitope pairs [(t1,e1),(t2,e2),...]
 ```
 from predict import predict_only
