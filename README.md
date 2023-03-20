@@ -67,6 +67,8 @@ Name: Yuepeng Jiang
 Email: yuepjiang3-c@my.cityu.edu.hk/yuj009@eng.ucsd.edu/jiangdada12344321@gmail.com
 Note: For instant query, feel free to send me an email since I check email often. Otherwise, you may open an issue section in this repository.
 ```
+Welcome for reporting any bugs!
+
 ## License
 
 Free use of TEINet is granted under the terms of the GNU General Public License version 3 (GPLv3).
