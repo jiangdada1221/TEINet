@@ -5,6 +5,9 @@ from tqdm import tqdm
 import copy
 from collections import defaultdict
 import Levenshtein
+from tcrpeg.TCRpeg import TCRpeg
+from model import TEINet
+import torch
 
 def split(path,record_dic,fold=5,sep=','):
     '''
@@ -194,3 +197,12 @@ def mean_dis(dis,axis = 0,threshold = 5,offset=1):
         #     c_index.append(i)
         mean_distance.append(np.mean(compare))    
     return mean_distance
+
+def load_teinet(path,emb_path1='encoders/aa_emb_tcr.txt',emb_path2 = 'encoders/aa_emb_tcr.txt',device='cuda:0',normalize=True,weight_decay = 0):
+    model_tcr = TCRpeg(hidden_size=768,num_layers = 3,load_data=False,embedding_path=emb_path1,device=device)
+    model_tcr.create_model()
+    model_epi = TCRpeg(hidden_size=768,num_layers = 3,load_data=False,embedding_path=emb_path2,device=device)
+    model_epi.create_model()
+    model = TEINet(en_tcr=model_tcr,en_epi = model_epi,cat_size=768*2,dropout=0.1,normalize=True,weight_decay = 0,device=device)
+    model.load_state_dict(torch.load(path))
+    return model
