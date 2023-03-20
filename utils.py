@@ -205,4 +205,5 @@ def load_teinet(path,emb_path1='encoders/aa_emb_tcr.txt',emb_path2 = 'encoders/a
     model_epi.create_model()
     model = TEINet(en_tcr=model_tcr,en_epi = model_epi,cat_size=768*2,dropout=0.1,normalize=True,weight_decay = 0,device=device)
     model.load_state_dict(torch.load(path))
+    model = model.to(device)
     return model
