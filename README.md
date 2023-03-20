@@ -26,7 +26,7 @@ Levenshtein
 
 #### Training script:
 ```
-python train.py --train_file data/train_pos.csv --test_file data/test.csv --epochs 1 --model_path results/model.pth
+python train.py --train_file data/train_pos.csv --test_file data/test.csv --epochs 30 --model_path results/model.pth
 ```
 Please check the train.py for details (Or type python train.py --h). Note that the default negative sampling strategy is Unified (Uniform) Epiope, in order to choose other strategies, you need to specify: <br /> <br />
 ```--fre 0 ``` for Random Epitope <br />
