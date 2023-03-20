@@ -34,7 +34,7 @@ Please check the train.py for details (Or type python train.py --h). Note that t
 ```--sample_strategy sample_tcr``` for Random TCR <br /> <br />
 Note that if you want to use a static training dataset, please refer to the __epitope_sample_1fold__ or __tcr_sample_1fold__ functions in utils.py for sampling negatives based on the positive pairs using different strategies.
 #### Predict for TCR-epitope pairs [(t1,e1),(t2,e2),...]
-```
+```python
 from predict import predict_only
 from utils import load_teinet
 teinet = load_teinet('results/model.pth')
