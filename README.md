@@ -32,7 +32,7 @@ Please check the train.py for details (Or type python train.py --h). Note that t
 ```--fre 0 ``` for Random Epitope <br />
 ```----sample_strategy sample_tcr --reference_tcr path_to_reference_tcr``` for Reference TCR <br />
 ```--sample_strategy sample_tcr``` for Random TCR <br /> <br />
-The default training process use the dynamic sampling strategy (sampling negatives on the fly). If you don't want that, please enter *--static 1* and at the same time the training file should also contain negative pairs in addition to the positive pairs. For constructing a full dataset (negative+positive paiirs), please refer to the __epitope_sample_1fold__ or __tcr_sample_1fold__ functions in utils.py for sampling negatives based on the positive pairs using different strategies.
+The default training process use the dynamic sampling strategy (sampling negatives on the fly). If you don't want that, please enter *--static 1* and at the same time the training file should also contain negative pairs in addition to the positive pairs. For constructing a full dataset (negative+positive pairs), please refer to the __epitope_sample_1fold__ or __tcr_sample_1fold__ functions in utils.py for sampling negatives based on the positive pairs using different strategies.
 
 #### Predict for TCR-epitope pairs [(t1,e1),(t2,e2),...]
 ```python
