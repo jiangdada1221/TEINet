@@ -9,7 +9,9 @@ from model import TEINet
 from scipy.special import expit
 import argparse
 from predict import *
-from utils import aa_scan, contact_index
+from utils import aa_scan, contact_index,load_teinet
+import torch
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
@@ -17,6 +19,7 @@ if __name__ == '__main__':
     parser.add_argument('--cat_size',type=int,default=768*2)
     parser.add_argument('--offset',type=int,default=0)
     parser.add_argument('--scan_aa',type=str,default='A',help='The scan AA')
+    parser.add_argument('--device',type=str,default='cuda:0')
     parser.add_argument('--scan_aa_alternate',type=str,default='G',help='The alternative scan AA; If the aa=scan_aa, will then use this alternative AA for subsitution')
     parser.add_argument('--scan_axis',type=int,default=0)
     parser.add_argument('--threshold',type=float,default=5.0,help='distance threshold')
@@ -26,16 +29,19 @@ if __name__ == '__main__':
     parser.add_argument('--distance_matrix',type=str,default='data/PDB_distance/distance_matrices.p')
     args = parser.parse_args()
 
-    model_tcr = TCRpeg(hidden_size=args.cat_size // 2,num_layers = 3,load_data=False,embedding_path='encoders/aa_emb_tcr.txt')
+    #load model
+    model_tcr = TCRpeg(hidden_size=args.cat_size // 2,num_layers = 3,load_data=False,embedding_path='encoders/aa_emb_tcr.txt',device=args.device)
     model_tcr.create_model()
-    model_epi = TCRpeg(hidden_size=args.cat_size // 2,num_layers = 3,load_data=False,embedding_path='encoders/aa_emb_epi.txt')
+    model_epi = TCRpeg(hidden_size=args.cat_size // 2,num_layers = 3,load_data=False,embedding_path='encoders/aa_emb_epi.txt',device=args.device)
     model_epi.create_model()
-    model = TEINet(en_tcr=model_tcr,en_epi = model_epi,cat_size=args.cat_size,normalize=True)
+    model = TEINet(en_tcr=model_tcr,en_epi = model_epi,cat_size=args.cat_size,normalize=True,device=args.device)
 
     model.load_state_dict(torch.load(args.model_path))
+    # model = load_teinet(args.model_path,device=args.device)
     model.eval()
-    model = model.to('cuda:0')
+    model = model.to(args.device)
     #load model
+
 
     pdb_data  = pd.read_csv(args.pdb_original)
     with open(args.distance_matrix, 'rb') as f:
