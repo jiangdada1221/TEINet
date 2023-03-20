@@ -40,6 +40,11 @@ from utils import load_teinet
 teinet = load_teinet('results/model.pth',device='cuda:0')
 predictions = predict_only(ts,es,model=teinet)
 ```
+Or you can use the script to make predictions for user's input file using trained model:
+```
+python predict.py --dset_path path_to_data --model_path path_to_teinet --use_column CDR3.beta --save_prediction_path results/test.txt
+```
+<br />
 #### Compute the score difference in different region of Complexes in PDB database
 ```
 python pdb_distance.py --threshold 5.0 --model_path results/model.pth
