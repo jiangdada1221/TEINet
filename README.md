@@ -36,7 +36,9 @@ Note that if you want to use a static training dataset, please refer to the __ep
 #### Predict for TCR-epitope pairs [(t1,e1),(t2,e2),...]
 ```
 from predict import predict_only
-predictions = predict_only(ts,es,model=TEINet_model)
+from utils import load_teinet
+teinet = load_teinet('results/model.pth')
+predictions = predict_only(ts,es,model=teinet)
 ```
 #### Compute the score difference in different region of Complexes in PDB database
 ```
