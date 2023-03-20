@@ -37,7 +37,7 @@ Note that if you want to use a static training dataset, please refer to the __ep
 ```python
 from predict import predict_only
 from utils import load_teinet
-teinet = load_teinet('results/model.pth')
+teinet = load_teinet('results/model.pth',device='cuda:0')
 predictions = predict_only(ts,es,model=teinet)
 ```
 #### Compute the score difference in different region of Complexes in PDB database
