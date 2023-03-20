@@ -44,7 +44,7 @@ Or you can use the script to make predictions for user's input file using traine
 ```
 python predict.py --dset_path path_to_data --model_path path_to_teinet --use_column CDR3.beta --save_prediction_path results/test.txt
 ```
-<br />
+
 #### Compute the score difference in different region of Complexes in PDB database
 ```
 python pdb_distance.py --threshold 5.0 --model_path results/model.pth
