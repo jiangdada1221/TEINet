@@ -87,7 +87,7 @@ Free use of TEINet is granted under the terms of the GNU General Public License 
   publisher={Oxford University Press}
 }
 ```
-The autoencoder used in the paper:
+You may also cite the autoencoder used in the paper:
 ```
 @article{jiang2023deep,
   title={Deep autoregressive generative models capture the intrinsics embedded in T-cell receptor repertoires},
