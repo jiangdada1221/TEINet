@@ -74,15 +74,30 @@ Welcome for reporting any bugs!
 
 Free use of TEINet is granted under the terms of the GNU General Public License version 3 (GPLv3).
 
-## Citation (will be published in Briefings in Bioinformatics)
+## Citation
 ```
-@article{jiang2022teinet,
-  title={TEINet: a deep learning framework for prediction of TCR-epitope binding specificity},
-  author={Jiang, Yuepeng and Huo, Miaozhe and Li, Shuaicheng},
-  journal={bioRxiv},
-  pages={2022--10},
-  year={2022},
-  publisher={Cold Spring Harbor Laboratory}
+@article{jiang2023teinet,
+  title={TEINet: a deep learning framework for prediction of TCR--epitope binding specificity},
+  author={Jiang, Yuepeng and Huo, Miaozhe and Cheng Li, Shuai},
+  journal={Briefings in Bioinformatics},
+  volume={24},
+  number={2},
+  pages={bbad086},
+  year={2023},
+  publisher={Oxford University Press}
+}
+```
+The autoencoder used in the paper:
+```
+@article{jiang2023deep,
+  title={Deep autoregressive generative models capture the intrinsics embedded in T-cell receptor repertoires},
+  author={Jiang, Yuepeng and Li, Shuai Cheng},
+  journal={Briefings in Bioinformatics},
+  volume={24},
+  number={2},
+  pages={bbad038},
+  year={2023},
+  publisher={Oxford University Press}
 }
 ```
 
