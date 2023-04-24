@@ -22,9 +22,9 @@ Levenshtein
 
  All the data used in the paper is publicly available, so we suggest readers refer to the original papers for more details. We also upload the processed data which can be downloaded via [this link](https://drive.google.com/file/d/1ioEkYeIdLMafYgoNER33QrThKHlgZCzZ/view?usp=sharing). Description.txt in the data zip file gives a brief descripion for each file.
 
-## Train TEINet
+## Usage of TEINet
 
-#### Training script:
+#### Training TEINet:
 ```
 python train.py --train_file data/train_pos.csv --test_file data/test.csv --epochs 30 --model_path results/model.pth
 ```
@@ -34,17 +34,19 @@ Please check the train.py for details (Or type python train.py --h). Note that t
 ```--sample_strategy sample_tcr``` for Random TCR <br /> <br />
 The default training process use the dynamic sampling strategy (sampling negatives on the fly). If you don't want that, please enter *--static 1* and at the same time the training file should also contain negative pairs in addition to the positive pairs. For constructing a full dataset (negative+positive pairs), please refer to the __epitope_sample_1fold__ or __tcr_sample_1fold__ functions in utils.py for sampling negatives based on the positive pairs using different strategies.
 
-#### Predict for TCR-epitope pairs [(t1,e1),(t2,e2),...]
+#### Predict TCR-epitope pairs
 ```python
 from predict import predict_only
 from utils import load_teinet
-teinet = load_teinet('results/model.pth',device='cuda:0')
-predictions = predict_only(ts,es,model=teinet)
+teinet = load_teinet('results/model.pth',device='cuda:0') #load the trained model
+predictions = predict_only(ts,es,model=teinet) #make predictions; ts (es): a list containing the CDR3s (epitopes)
 ```
 Or you can use the script to make predictions for user's input file using trained model:
 ```
 python predict.py --dset_path path_to_data --model_path path_to_teinet --use_column CDR3.beta --save_prediction_path results/test.txt
 ```
+We also provide our trained TEINet models: [teinet_data.pth](https://drive.google.com/file/d/12pVozHhRcGyMBgMlhcjgcclE3wlrVO32/view?usp=sharing) and [large_dset.pth](https://drive.google.com/file/d/1dguZKJL_NH6heBcIE1hpM7WBdYnPJCIT/view?usp=sharing). <br />
+The teinet_data.pth model was trained on the dataset in the paper (~40,000 pairs); The large_dset.pth was trained on a larger dataset (~100,000 pairs) collected in [TCR2vec](https://www.biorxiv.org/content/10.1101/2023.03.31.535142v1), which combines data from VDJdb, McPAS-TCR and IEDB.
 
 #### Compute the score difference in different region of Complexes in PDB database
 ```
